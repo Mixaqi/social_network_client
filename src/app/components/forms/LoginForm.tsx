@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useLoginUserMutation } from '@/app/api/authApi';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { EMAIL_REGEX } from '@/app/constants/regexs';
+import { useTogglePasswordVisibility } from '@/app/utils/passwordMatchValidator';
 
 interface LoginFormData {
   email: string;
@@ -12,6 +13,7 @@ interface LoginFormData {
 
 const LoginForm: React.FC = () => {
   const [loginUser, { isLoading, isError }] = useLoginUserMutation();
+  const { showPassword, togglePasswordVisibility } = useTogglePasswordVisibility();
 
   const {
     register,
@@ -45,7 +47,7 @@ const LoginForm: React.FC = () => {
                 <label htmlFor='email' className='block text-sm font-medium text-gray-700'>
                   Email
                 </label>
-                <div className='relative mt-1 rounded-md shadow-sm'>
+                <div className='relative mt-1'>
                   <input
                     {...register('email', {
                       required: 'Email is required',
@@ -63,16 +65,15 @@ const LoginForm: React.FC = () => {
                     placeholder='email_example@gmail.com'
                   />
                 </div>
+                {errors.email && (
+                  <p className='mt-2 text-sm text-red-600'>
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
             </div>
-            {errors.email && (
-              <div className='mt-2'>
-                <p className='text-sm text-red-600' style={{ paddingLeft: '2.5rem' }}>
-                  {errors.email.message}
-                </p>
-              </div>
-            )}
           </div>
+
           <div>
             <div className='flex items-center space-x-3'>
               <img
@@ -85,7 +86,7 @@ const LoginForm: React.FC = () => {
                 <label htmlFor='password' className='block text-sm font-medium text-gray-700'>
                   Password
                 </label>
-                <div className='relative mt-1 rounded-md shadow-sm'>
+                <div className='relative mt-1'>
                   <input
                     {...register('password', {
                       required: 'Password is required',
@@ -98,7 +99,7 @@ const LoginForm: React.FC = () => {
                         message: 'Password cannot exceed 64 characters',
                       },
                     })}
-                    type='password'
+                    type={showPassword ? 'text' : 'password'}
                     id='password'
                     name='password'
                     className={`block w-full rounded-md border text-sm focus:border-green-500 focus:ring-green-500 ${
@@ -106,16 +107,25 @@ const LoginForm: React.FC = () => {
                     }`}
                     placeholder='Password'
                   />
+                  <button
+                    type='button'
+                    onClick={togglePasswordVisibility}
+                    className='absolute inset-y-0 right-0 flex items-center pr-3'
+                  >
+                    <img
+                      src={showPassword ? '/images/eye_slash.svg' : '/images/eye.svg'}
+                      alt='Toggle Password Visibility'
+                      className='h-5 w-5 text-gray-500'
+                    />
+                  </button>
                 </div>
+                {errors.password && (
+                  <p className='mt-2 text-sm text-red-600'>
+                    {errors.password.message}
+                  </p>
+                )}
               </div>
             </div>
-            {errors.password && (
-              <div className='mt-2'>
-                <p className='text-sm text-red-600' style={{ paddingLeft: '2.5rem' }}>
-                  {errors.password.message}
-                </p>
-              </div>
-            )}
           </div>
 
           <div>

@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { EMAIL_REGEX } from '@/app/constants/regexs';
+import { useTogglePasswordVisibility } from '@/app/utils/passwordMatchValidator';
 
 interface RegisterFormData {
   email: string;
@@ -17,6 +18,8 @@ const RegisterForm: React.FC = () => {
     watch,
     formState: { errors },
   } = useForm<RegisterFormData>();
+
+  const { showPassword, togglePasswordVisibility } = useTogglePasswordVisibility();
 
   const onSubmit: SubmitHandler<RegisterFormData> = (data) => {
     console.log(data);
@@ -66,7 +69,6 @@ const RegisterForm: React.FC = () => {
               </div>
             </div>
           </div>
-
           <div>
             <div className='flex items-center space-x-3'>
               <img
@@ -88,7 +90,7 @@ const RegisterForm: React.FC = () => {
                         message: 'Password must be at least 8 characters long',
                       },
                     })}
-                    type='password'
+                    type={showPassword ? 'text' : 'password'}
                     id='password'
                     name='password'
                     className={`block w-full rounded-md border text-sm focus:border-green-500 focus:ring-green-500 ${
@@ -96,6 +98,17 @@ const RegisterForm: React.FC = () => {
                     }`}
                     placeholder='Password'
                   />
+                  <button
+                    type='button'
+                    onClick={togglePasswordVisibility}
+                    className='absolute inset-y-0 right-0 flex items-center pr-3'
+                  >
+                    <img
+                      src={`/images/${showPassword ? 'eye_slash.svg' : 'eye.svg'}`}
+                      alt='Toggle Password Visibility'
+                      className='h-6 w-6 text-gray-500'
+                    />
+                  </button>
                 </div>
                 {errors.password && (
                   <p className='mt-2 text-sm text-red-600'>{errors.password.message}</p>
@@ -121,7 +134,7 @@ const RegisterForm: React.FC = () => {
                       required: 'Confirming password is required',
                       validate: validateConfirmedPassword,
                     })}
-                    type='password'
+                    type={showPassword ? 'text' : 'password'}
                     id='confirmedPassword'
                     name='confirmedPassword'
                     className={`block w-full rounded-md border text-sm focus:border-green-500 focus:ring-green-500 ${
@@ -129,6 +142,17 @@ const RegisterForm: React.FC = () => {
                     }`}
                     placeholder='Confirm Password'
                   />
+                  <button
+                    type='button'
+                    onClick={togglePasswordVisibility}
+                    className='absolute inset-y-0 right-0 flex items-center pr-3'
+                  >
+                    <img
+                      src={`/images/${showPassword ? 'eye_slash.svg' : 'eye.svg'}`}
+                      alt='Toggle Password Visibility'
+                      className='h-6 w-6 text-gray-500'
+                    />
+                  </button>
                 </div>
                 {errors.confirmedPassword && (
                   <p className='mt-2 text-sm text-red-600'>{errors.confirmedPassword.message}</p>
@@ -136,6 +160,7 @@ const RegisterForm: React.FC = () => {
               </div>
             </div>
           </div>
+
           <div>
             <button
               type='submit'

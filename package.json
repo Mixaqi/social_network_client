@@ -15,6 +15,7 @@
     "@types/react-redux": "^7.1.33",
     "framer-motion": "^11.3.24",
     "js-cookie": "^3.0.5",
+    "js-cookies": "^1.0.4",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
@@ -23,8 +24,9 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",

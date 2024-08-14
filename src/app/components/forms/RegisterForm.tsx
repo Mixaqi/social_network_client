@@ -63,9 +63,7 @@ const RegisterForm: React.FC = () => {
                     placeholder='email_example@gmail.com'
                   />
                 </div>
-                {errors.email && (
-                  <p className='mt-2 text-sm text-red-600'>{errors.email.message}</p>
-                )}
+                {errors.email && <p className='mt-2 text-sm text-red-600'>{errors.email.message}</p>}
               </div>
             </div>
           </div>
@@ -110,9 +108,7 @@ const RegisterForm: React.FC = () => {
                     />
                   </button>
                 </div>
-                {errors.password && (
-                  <p className='mt-2 text-sm text-red-600'>{errors.password.message}</p>
-                )}
+                {errors.password && <p className='mt-2 text-sm text-red-600'>{errors.password.message}</p>}
               </div>
             </div>
           </div>
@@ -161,7 +157,19 @@ const RegisterForm: React.FC = () => {
             </div>
           </div>
 
-          <div>
+          <div className='space-y-2'>
+            <button
+              type='button'
+              className='flex w-full items-center justify-center rounded-md bg-black px-4 py-2 font-semibold text-white shadow-lg outline-none transition duration-150 ease-in-out hover:bg-gray-800 hover:shadow-xl focus:shadow-xl focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
+            >
+              <img
+                src='/images/github_icon.svg'
+                alt='GitHub Icon'
+                className='h-5 w-5 mr-2'
+              />
+              Sign up with GitHub
+            </button>
+
             <button
               type='submit'
               className='flex w-full items-center justify-center rounded-md bg-green-600 px-4 py-2 font-semibold text-white shadow-lg outline-none transition duration-150 ease-in-out hover:bg-green-700 hover:shadow-xl focus:shadow-xl focus:ring-2 focus:ring-green-500 focus:ring-offset-2'

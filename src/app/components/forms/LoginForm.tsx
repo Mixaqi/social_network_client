@@ -12,7 +12,7 @@ interface LoginFormData {
 }
 
 const LoginForm: React.FC = () => {
-  const [loginUser, { isLoading, isError }] = useLoginUserMutation();
+  const [loginUser, { isLoading }] = useLoginUserMutation();
   const { showPassword, togglePasswordVisibility } = useTogglePasswordVisibility();
 
   const {
@@ -34,20 +34,20 @@ const LoginForm: React.FC = () => {
   return (
     <div className='w-full max-w-md rounded-xl bg-white bg-opacity-80 p-6 shadow-xl sm:p-10'>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='space-y-6'>
+        <div className='space-y-4'>
           <div>
             <div className='flex items-center space-x-3'>
               <img
                 src='/images/envelope.svg'
                 alt='Email Icon'
                 className='h-6 w-6 text-gray-500'
-                style={{ marginTop: '0.8rem' }}
+                style={{ marginTop: '1.3rem' }}
               />
               <div className='flex-1'>
                 <label htmlFor='email' className='block text-sm font-medium text-gray-700'>
                   Email
                 </label>
-                <div className='relative mt-1'>
+                <div className='relative mt-0.5'>
                   <input
                     {...register('email', {
                       required: 'Email is required',
@@ -65,11 +65,7 @@ const LoginForm: React.FC = () => {
                     placeholder='email_example@gmail.com'
                   />
                 </div>
-                {errors.email && (
-                  <p className='mt-2 text-sm text-red-600'>
-                    {errors.email.message}
-                  </p>
-                )}
+                {errors.email && <p className='mt-0.5 text-xs text-red-600'>{errors.email.message}</p>}
               </div>
             </div>
           </div>
@@ -80,13 +76,13 @@ const LoginForm: React.FC = () => {
                 src='/images/key.svg'
                 alt='Password Icon'
                 className='h-6 w-6 text-gray-500'
-                style={{ marginTop: '0.8rem' }}
+                style={{ marginTop: '1.3rem' }}
               />
               <div className='flex-1'>
                 <label htmlFor='password' className='block text-sm font-medium text-gray-700'>
                   Password
                 </label>
-                <div className='relative mt-1'>
+                <div className='relative mt-0.5'>
                   <input
                     {...register('password', {
                       required: 'Password is required',
@@ -119,16 +115,24 @@ const LoginForm: React.FC = () => {
                     />
                   </button>
                 </div>
-                {errors.password && (
-                  <p className='mt-2 text-sm text-red-600'>
-                    {errors.password.message}
-                  </p>
-                )}
+                {errors.password && <p className='mt-0.5 text-xs text-red-600'>{errors.password.message}</p>}
               </div>
             </div>
           </div>
 
-          <div>
+          <div className='space-y-1'>
+            <button
+              type='button'
+              className='flex w-full items-center justify-center rounded-md bg-black px-4 py-2 font-semibold text-white shadow-lg outline-none transition duration-150 ease-in-out hover:bg-gray-800 hover:shadow-xl focus:shadow-xl focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
+            >
+              <img
+                src='/images/github_icon.svg'
+                alt='GitHub Icon'
+                className='h-5 w-5 mr-2'
+              />
+              Sign in with GitHub
+            </button>
+
             <button
               type='submit'
               className='flex w-full items-center justify-center rounded-md bg-green-600 px-4 py-2 font-semibold text-white shadow-lg outline-none transition duration-150 ease-in-out hover:bg-green-700 hover:shadow-xl focus:shadow-xl focus:ring-2 focus:ring-green-500 focus:ring-offset-2'
@@ -148,4 +152,4 @@ const LoginForm: React.FC = () => {
   );
 };
 
-export default LoginForm;
+export default    LoginForm;

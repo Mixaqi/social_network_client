@@ -1,4 +1,4 @@
-'use client'; // 🔴 Read Quote below
+'use client';
 
 import { Provider } from 'react-redux';
 import { store } from './store';

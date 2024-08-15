@@ -35,13 +35,7 @@ const AuthInputField: React.FC<AuthInputFieldProps> = ({
     <div className='relative'>
       <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
         <div className='relative h-5 w-5'>
-          <Image
-            src={iconSrc}
-            alt={`${label} Icon`}
-            layout='fill'
-            objectFit='contain'
-            priority
-          />
+          <Image src={iconSrc} alt={`${label} Icon`} layout='fill' objectFit='contain' priority />
         </div>
       </div>
       <input

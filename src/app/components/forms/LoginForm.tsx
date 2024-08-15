@@ -1,13 +1,13 @@
 'use client';
-import React from 'react';
-import Link from 'next/link';
 import { useLoginUserMutation } from '@/app/api/authApi';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import AuthLabel from '@/app/components/forms/labels/authLabel';
 import { EMAIL_REGEX } from '@/app/constants/regexs';
 import { useTogglePasswordVisibility } from '@/app/utils/passwordMatchValidator';
-import AuthInputField from './formComponents/authInputField';
-import AuthButton from './formComponents/authButton';
-import AuthLabel from '@/app/components/labels/authLabel';
+import Link from 'next/link';
+import React from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import AuthButton from '@/app/components/forms/formComponents/authButton';
+import AuthInputField from '@/app/components/forms/formComponents/authInputField';
 
 interface LoginFormData {
   email: string;
@@ -36,10 +36,7 @@ const LoginForm: React.FC = () => {
 
   return (
     <div className='w-full max-w-md rounded-xl bg-white bg-opacity-80 p-6 shadow-xl sm:p-10'>
-      <AuthLabel
-        description='Please log in to your account'
-        iconSrc='/images/user_icon.svg'
-      />
+      <AuthLabel description='Please log in to your account' iconSrc='/images/user_icon.svg' />
 
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
         <AuthInputField

@@ -1,12 +1,12 @@
 'use client';
-import React from 'react';
-import Link from 'next/link';
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { EMAIL_REGEX } from '@/app/constants/regexs';
 import { useTogglePasswordVisibility } from '@/app/utils/passwordMatchValidator';
-import AuthButton from './formComponents/authButton';
-import AuthInputField from './formComponents/authInputField';
-import AuthLabel from '../labels/authLabel';
+import Link from 'next/link';
+import React from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import AuthButton from '@/app/components/forms/formComponents/authButton';
+import AuthInputField from '@/app/components/forms/formComponents/authInputField';
+import AuthLabel from '@/app/components/forms/labels/authLabel';
 
 interface RegisterFormData {
   email: string;
@@ -34,10 +34,7 @@ const RegisterForm: React.FC = () => {
 
   return (
     <div className='w-full max-w-md rounded-xl bg-white bg-opacity-80 p-6 shadow-xl sm:p-10'>
-      <AuthLabel
-        description='Create your account'
-        iconSrc='/images/user_icon.svg'
-      />
+      <AuthLabel description='Create your account' iconSrc='/images/user_icon.svg' />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='space-y-6'>
           <AuthInputField

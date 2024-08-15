@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FieldError } from 'react-hook-form';
 
 interface AuthInputFieldProps {
@@ -33,7 +34,15 @@ const AuthInputField: React.FC<AuthInputFieldProps> = ({
     </label>
     <div className='relative'>
       <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
-        <img src={iconSrc} alt={`${label} Icon`} className='h-5 w-5 text-gray-400' />
+        <div className='relative h-5 w-5'>
+          <Image
+            src={iconSrc}
+            alt={`${label} Icon`}
+            layout='fill'
+            objectFit='contain'
+            priority
+          />
+        </div>
       </div>
       <input
         {...register(id, validation)}
@@ -51,11 +60,15 @@ const AuthInputField: React.FC<AuthInputFieldProps> = ({
           onClick={togglePasswordVisibility}
           className='absolute inset-y-0 right-0 flex items-center pr-3'
         >
-          <img
-            src={showPassword ? '/images/eye_slash.svg' : '/images/eye.svg'}
-            alt='Toggle Password Visibility'
-            className='h-5 w-5 text-gray-500'
-          />
+          <div className='relative h-5 w-5'>
+            <Image
+              src={showPassword ? '/images/eye_slash.svg' : '/images/eye.svg'}
+              alt='Toggle Password Visibility'
+              layout='fill'
+              objectFit='contain'
+              priority
+            />
+          </div>
         </button>
       )}
     </div>

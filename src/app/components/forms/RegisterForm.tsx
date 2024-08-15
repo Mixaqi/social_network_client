@@ -6,6 +6,7 @@ import { EMAIL_REGEX } from '@/app/constants/regexs';
 import { useTogglePasswordVisibility } from '@/app/utils/passwordMatchValidator';
 import AuthButton from './formComponents/authButton';
 import AuthInputField from './formComponents/authInputField';
+import AuthLabel from '../labels/authLabel';
 
 interface RegisterFormData {
   email: string;
@@ -33,6 +34,10 @@ const RegisterForm: React.FC = () => {
 
   return (
     <div className='w-full max-w-md rounded-xl bg-white bg-opacity-80 p-6 shadow-xl sm:p-10'>
+      <AuthLabel
+        description='Create your account'
+        iconSrc='/images/user_icon.svg'
+      />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='space-y-6'>
           <AuthInputField

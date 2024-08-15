@@ -82,7 +82,7 @@ const LoginForm: React.FC = () => {
             <AuthButton
               label='Sign in with GitHub'
               onClick={() => {
-                /* GitHub auth logic */
+                window.location.href = `https://github.com/login/oauth/authorize?client_id=Ov23lixxG2PWaJNVT8qH&redirect_uri=http://localhost:8080/oauth/callback&scope=user:email`;
               }}
               className='bg-black hover:bg-gray-800 hover:shadow-xl focus:shadow-xl focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
               iconSrc='/images/github_icon.svg'

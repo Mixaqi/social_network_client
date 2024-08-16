@@ -7,18 +7,18 @@ const Custom404: React.FC = () => {
   const router = useRouter();
 
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen bg-[#00cba9] text-white text-center'>
+    <div className='flex min-h-screen flex-col items-center justify-center bg-[#00cba9] text-center text-white'>
       <h1 className='text-6xl font-bold'>404</h1>
-      <p className='text-lg mt-4'>Oops! The page you're looking for doesn't exist.</p>
+      <p className='mt-4 text-lg'>Oops! The page you're looking for doesn't exist.</p>
       <Link
         href='/'
-        className='mt-6 text-lg font-semibold bg-white text-[#00cba9] px-4 py-2 rounded-md shadow-md hover:bg-gray-100 transition'
+        className='mt-6 rounded-md bg-white px-4 py-2 text-lg font-semibold text-[#00cba9] shadow-md transition hover:bg-gray-100'
       >
         Go Home
       </Link>
       <button
         onClick={() => router.back()}
-        className='mt-2 text-lg font-semibold text-white underline hover:text-gray-200 transition'
+        className='mt-2 text-lg font-semibold text-white underline transition hover:text-gray-200'
       >
         Go Back
       </button>

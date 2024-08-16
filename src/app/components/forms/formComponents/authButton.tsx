@@ -26,7 +26,7 @@ const AuthButton: React.FC<AuthButtonProps> = ({
   >
     {iconSrc && (
       <div className='relative mr-2 h-5 w-5'>
-        <Image src={iconSrc} alt='Button Icon' layout='fill' objectFit='contain' priority />
+        <Image src={iconSrc} alt='Button Icon' fill style={{ objectFit: 'contain' }} priority />
       </div>
     )}
     {label}

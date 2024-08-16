@@ -10,7 +10,7 @@ const AuthLabel: React.FC<AuthLabelProps> = ({ description, iconSrc }) => {
     <div className='mb-3 flex items-center justify-center space-x-2'>
       {iconSrc && (
         <div className='relative h-8 w-8'>
-          <Image src={iconSrc} alt='Label Icon' layout='fixed' width={32} height={32} objectFit='contain' />
+          <Image src={iconSrc} alt='Label Icon' width={32} height={32} style={{ objectFit: 'contain' }} />
         </div>
       )}
       <p className='text-lg text-black'>{description}</p>
